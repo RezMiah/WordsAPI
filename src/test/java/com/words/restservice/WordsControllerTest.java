@@ -10,7 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class WordsControllerTest {
 
     @Test
-    void whenGetWordCountIsCalledCorrectNumberOfWordsReturned() {
+    void whenGetWordsDetailsIsCalledThenCorrectWordDetailsReturned() {
+        String expectedDetails = "\n Word count = 9\n Number of words of length 1 is 1\n" +
+                " Number of words of length 2 is 1\n" +
+                " Number of words of length 3 is 1\n" +
+                " Number of words of length 4 is 2\n" +
+                " Number of words of length 5 is 2\n" +
+                " Number of words of length 8 is 1\n" +
+                " Number of words of length 10 is 1\n" +
+                " Average word length = 5.0\n" +
+                " The most frequently occurring word length is 2 for word lengths of: \n" +
+                "4\n" +
+                "5\n";
+
+        String wordDetails = new WordsController().getWordsDetails();
+
+        assertEquals(expectedDetails, wordDetails);
+    }
+
+    @Test
+    void whenGetWordCountIsCalledThenCorrectNumberOfWordsReturned() {
         int wordCount  = WordsController.getWordCount("Hello World 345 & .!");
 
         assertEquals(5, wordCount);
